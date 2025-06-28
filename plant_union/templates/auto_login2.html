@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <form id="autologin" action="http://localhost:5001/sso_login" method="GET">
+      <input type="hidden" name="token" value="plant_head_sso_token">
+    </form>
+    <script>
+      document.getElementById('autologin').submit();
+    </script>
+    <p>Logging you in automatically to ChipSight...</p>
+  </body>
+</html> 
