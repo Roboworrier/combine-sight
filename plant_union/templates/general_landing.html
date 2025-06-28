@@ -18,7 +18,64 @@
             align-items: center;
             justify-content: center;
             padding: 20px;
+            position: relative;
         }
+        
+        /* Management Login Icon Styles */
+        .management-login-icon {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+        }
+        
+        .management-login-icon:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 1);
+        }
+        
+        .management-login-icon svg {
+            width: 30px;
+            height: 30px;
+            fill: #667eea;
+        }
+        
+        .management-login-icon:hover svg {
+            fill: #764ba2;
+        }
+        
+        .management-login-tooltip {
+            position: absolute;
+            top: 70px;
+            right: 0;
+            background: #333;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .management-login-icon:hover .management-login-tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+        
         .container {
             background: white;
             border-radius: 20px;
@@ -127,6 +184,16 @@
             .option-image {
                 height: 150px;
             }
+            .management-login-icon {
+                top: 15px;
+                right: 15px;
+                width: 50px;
+                height: 50px;
+            }
+            .management-login-icon svg {
+                width: 25px;
+                height: 25px;
+            }
         }
         @media (max-width: 480px) {
             .container {
@@ -138,10 +205,31 @@
             .welcome-text {
                 font-size: 1rem;
             }
+            .management-login-icon {
+                top: 10px;
+                right: 10px;
+                width: 45px;
+                height: 45px;
+            }
+            .management-login-icon svg {
+                width: 22px;
+                height: 22px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Management Login Icon -->
+    <div class="management-login-icon" onclick="window.location.href='/'">
+        <!-- Executive SVG Icon (person in suit) -->
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="7" r="4"/>
+            <path d="M4 20v-1c0-2.8 2.7-5 8-5s8 2.2 8 5v1z"/>
+            <rect x="9" y="13" width="6" height="2" rx="1"/>
+        </svg>
+        <div class="management-login-tooltip">Management Login</div>
+    </div>
+
     <div class="container">
         <div class="logo" style="background: none; box-shadow: none;">
             <img src="{{ url_for('static', filename='Images/Addverb_logo.png') }}" alt="Logo" style="width: 200px; height: 200px; object-fit: contain; border-radius: 50%; background: white; box-shadow: 0 4px 12px rgba(102,126,234,0.08);">

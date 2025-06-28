@@ -49,7 +49,7 @@ APPS = {
         'path': 'plant_union',
         'port': 5002,
         'protocol': 'HTTP',
-        'main_file': 'app.py',
+        'main_file': 'run.py',
         'description': 'Landing Page & SSO Gateway'
     }
 }
@@ -86,14 +86,14 @@ def start_botsight(app_path):
         os.chdir(app_path)
         
         # Check if SSL certificates exist
-        cert_file = "localhost.pem"
-        key_file = "localhost-key.pem"
+        cert_file = "10.1.2.158.pem"
+        key_file = "10.1.2.158-key.pem"
         
         if not (os.path.exists(cert_file) and os.path.exists(key_file)):
             logger.warning("SSL certificates not found. Generating self-signed certificates...")
             # Generate self-signed certificates using mkcert if available
-            if os.path.exists("mkcert.exe"):
-                subprocess.run(["./mkcert.exe", "localhost"], check=True)
+            if os.path.exists("mkcert"):
+                subprocess.run(["./mkcert.exe", "10.1.2.158"], check=True)
             else:
                 logger.error("mkcert.exe not found. Cannot start BOTSIGHT with HTTPS.")
                 return False
@@ -137,9 +137,9 @@ def start_plant_union(app_path):
         # Change to app directory using absolute path
         os.chdir(app_path)
         
-        # Start PLANT_UNION with Flask
+        # Start PLANT_UNION with eventlet (run.py)
         logger.info("Starting PLANT_UNION on port 5002 (HTTP)...")
-        subprocess.run([sys.executable, "app.py"], check=True)
+        subprocess.run([sys.executable, "run.py"], check=True)
         
     except subprocess.CalledProcessError as e:
         logger.error(f"Failed to start PLANT_UNION: {e}")
