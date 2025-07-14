@@ -233,7 +233,7 @@ For technical support and inquiries:
 
 ## 📄 License
 
-Copyright © 2025 Diwakar Singh. All rights reserved.
+Copyright © 2025 SightSystems™ (Diwakar Singh). All rights reserved.
 See individual application license files for specific terms.
 
 ---
